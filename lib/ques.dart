@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:revise/anwser_btn.dart';
+import 'package:revise/data/ques.dart';
+import 'package:revise/models/quiz_ques.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({super.key});
@@ -10,6 +13,35 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Ques screen'));
+    final currentQuestion = questions[0];
+    return Center(
+      child: Container(
+        margin: EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                currentQuestion.text,
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            ...currentQuestion.anwsers.map(
+              (anwser) {
+                return AnwserBtn(
+                  anwserText: anwser,
+                  onTap: () {},
+                );
+              },
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

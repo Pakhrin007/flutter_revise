@@ -17,7 +17,6 @@ class _QuizState extends State<Quiz> {
 
   @override
   void initState() {
-    // TODO: implement initState
     activeScreen = StartScreen(switchScreen);
     // activeScreen = 'ques-screen';
 
