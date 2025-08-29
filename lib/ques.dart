@@ -4,7 +4,9 @@ import 'package:revise/data/ques.dart';
 import 'package:revise/models/quiz_ques.dart';
 
 class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({super.key});
+  const QuestionScreen({super.key, required this.onSelectAnwser});
+
+  final void Function(String anwser) onSelectAnwser;
 
   @override
   State<QuestionScreen> createState() => _QuestionScreenState();
@@ -12,9 +14,16 @@ class QuestionScreen extends StatefulWidget {
 
 class _QuestionScreenState extends State<QuestionScreen> {
   var currentQuestionIndex = 0;
-  void anwserQuestion() {
+
+  void anwserQuestion(String selectedAnwser) {
+    widget.onSelectAnwser(selectedAnwser);
+
     setState(() {
-      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+      } else {
+        currentQuestionIndex = 0; // reset when quiz restarts
+      }
     });
   }
 
@@ -42,7 +51,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
               (anwser) {
                 return AnwserBtn(
                   anwserText: anwser,
-                  onTap: anwserQuestion,
+                  onTap: () {
+                    anwserQuestion(anwser);
+                  },
                 );
               },
             )
