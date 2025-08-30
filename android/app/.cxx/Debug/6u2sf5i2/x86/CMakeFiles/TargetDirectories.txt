@@ -1,0 +1,2 @@
+C:/Users/User/OneDrive/Desktop/f/flutter_revise/android/app/.cxx/Debug/6u2sf5i2/x86/CMakeFiles/edit_cache.dir
+C:/Users/User/OneDrive/Desktop/f/flutter_revise/android/app/.cxx/Debug/6u2sf5i2/x86/CMakeFiles/rebuild_cache.dir
